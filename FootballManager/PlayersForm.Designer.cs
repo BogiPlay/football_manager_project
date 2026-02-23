@@ -1,6 +1,6 @@
 ﻿namespace FootballManager
 {
-    partial class ClubsForm
+    partial class PlayersForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgvClubs = new DataGridView();
-            txtName = new TextBox();
-            txtCity = new TextBox();
+            dgvPlayers = new DataGridView();
+            txtFirstName = new TextBox();
+            txtLastName = new TextBox();
             label1 = new Label();
             label2 = new Label();
             btnLoad = new Button();
@@ -39,39 +39,40 @@
             btnDelete = new Button();
             btnClear = new Button();
             txtId = new TextBox();
-            txtStadium = new TextBox();
-            txtFoundedYear = new TextBox();
+            txtNationality = new TextBox();
             label3 = new Label();
             label4 = new Label();
-            ((System.ComponentModel.ISupportInitialize)dgvClubs).BeginInit();
+            numKitNumber = new NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)dgvPlayers).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numKitNumber).BeginInit();
             SuspendLayout();
             // 
-            // dgvClubs
+            // dgvPlayers
             // 
-            dgvClubs.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvClubs.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClubs.Location = new Point(12, 12);
-            dgvClubs.Name = "dgvClubs";
-            dgvClubs.ReadOnly = true;
-            dgvClubs.Size = new Size(776, 268);
-            dgvClubs.TabIndex = 0;
-            dgvClubs.CellClick += dgvClubs_CellClick;
+            dgvPlayers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvPlayers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPlayers.Location = new Point(12, 12);
+            dgvPlayers.Name = "dgvPlayers";
+            dgvPlayers.ReadOnly = true;
+            dgvPlayers.Size = new Size(776, 268);
+            dgvPlayers.TabIndex = 0;
+            dgvPlayers.CellClick += dgvPlayers_CellClick;
             // 
-            // txtName
+            // txtFirstName
             // 
-            txtName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            txtName.Location = new Point(180, 309);
-            txtName.Name = "txtName";
-            txtName.Size = new Size(134, 29);
-            txtName.TabIndex = 1;
+            txtFirstName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            txtFirstName.Location = new Point(180, 309);
+            txtFirstName.Name = "txtFirstName";
+            txtFirstName.Size = new Size(134, 29);
+            txtFirstName.TabIndex = 1;
             // 
-            // txtCity
+            // txtLastName
             // 
-            txtCity.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            txtCity.Location = new Point(180, 351);
-            txtCity.Name = "txtCity";
-            txtCity.Size = new Size(134, 29);
-            txtCity.TabIndex = 2;
+            txtLastName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            txtLastName.Location = new Point(180, 351);
+            txtLastName.Name = "txtLastName";
+            txtLastName.Size = new Size(134, 29);
+            txtLastName.TabIndex = 2;
             // 
             // label1
             // 
@@ -87,11 +88,11 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label2.Location = new Point(126, 353);
+            label2.Location = new Point(90, 355);
             label2.Name = "label2";
-            label2.Size = new Size(48, 21);
+            label2.Size = new Size(84, 21);
             label2.TabIndex = 4;
-            label2.Text = "Град:";
+            label2.Text = "Фамилия:";
             // 
             // btnLoad
             // 
@@ -158,31 +159,23 @@
             txtId.TabIndex = 10;
             txtId.Visible = false;
             // 
-            // txtStadium
+            // txtNationality
             // 
-            txtStadium.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            txtStadium.Location = new Point(180, 392);
-            txtStadium.Name = "txtStadium";
-            txtStadium.Size = new Size(134, 29);
-            txtStadium.TabIndex = 11;
-            // 
-            // txtFoundedYear
-            // 
-            txtFoundedYear.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            txtFoundedYear.Location = new Point(180, 436);
-            txtFoundedYear.Name = "txtFoundedYear";
-            txtFoundedYear.Size = new Size(134, 29);
-            txtFoundedYear.TabIndex = 12;
+            txtNationality.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            txtNationality.Location = new Point(180, 392);
+            txtNationality.Name = "txtNationality";
+            txtNationality.Size = new Size(134, 29);
+            txtNationality.TabIndex = 11;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label3.Location = new Point(97, 396);
+            label3.Location = new Point(50, 395);
             label3.Name = "label3";
-            label3.Size = new Size(77, 21);
+            label3.Size = new Size(124, 21);
             label3.TabIndex = 13;
-            label3.Text = "Стадион:";
+            label3.Text = "Националност:";
             // 
             // label4
             // 
@@ -194,15 +187,22 @@
             label4.TabIndex = 14;
             label4.Text = "Година на създаване:";
             // 
-            // ClubsForm
+            // numKitNumber
+            // 
+            numKitNumber.Location = new Point(180, 440);
+            numKitNumber.Name = "numKitNumber";
+            numKitNumber.Size = new Size(134, 23);
+            numKitNumber.TabIndex = 15;
+            // 
+            // PlayersForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 488);
+            Controls.Add(numKitNumber);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(txtFoundedYear);
-            Controls.Add(txtStadium);
+            Controls.Add(txtNationality);
             Controls.Add(txtId);
             Controls.Add(btnClear);
             Controls.Add(btnDelete);
@@ -211,22 +211,23 @@
             Controls.Add(btnLoad);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(txtCity);
-            Controls.Add(txtName);
-            Controls.Add(dgvClubs);
-            Name = "ClubsForm";
-            Text = "Управление на клубове";
-            Load += ClubsForm_Load;
-            ((System.ComponentModel.ISupportInitialize)dgvClubs).EndInit();
+            Controls.Add(txtLastName);
+            Controls.Add(txtFirstName);
+            Controls.Add(dgvPlayers);
+            Name = "PlayersForm";
+            Text = "Управление на играчи";
+            Load += PlayersForm_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvPlayers).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numKitNumber).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dgvClubs;
-        private TextBox txtName;
-        private TextBox txtCity;
+        private DataGridView dgvPlayers;
+        private TextBox txtFirstName;
+        private TextBox txtLastName;
         private Label label1;
         private Label label2;
         private Button btnLoad;
@@ -235,9 +236,9 @@
         private Button btnDelete;
         private Button btnClear;
         private TextBox txtId;
-        private TextBox txtStadium;
-        private TextBox txtFoundedYear;
+        private TextBox txtNationality;
         private Label label3;
         private Label label4;
+        private NumericUpDown numKitNumber;
     }
 }
