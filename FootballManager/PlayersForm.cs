@@ -7,6 +7,7 @@ namespace FootballManager
     public partial class PlayersForm : Form
     {
         private PlayersRepository _repository;
+        private bool isInitializing = true;
 
         public PlayersForm()
         {
@@ -18,6 +19,7 @@ namespace FootballManager
         {
             LoadDropdowns();
             LoadData();
+            isInitializing = false;
         }
 
         private void LoadDropdowns()
@@ -137,7 +139,7 @@ namespace FootballManager
             }
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtId.Text))
             {
@@ -221,8 +223,16 @@ namespace FootballManager
             }
         }
 
-        private void cboClubFilter_SelectedIndexChanged(object sender, EventArgs e) => LoadData();
-        private void cboPositionFilter_SelectedIndexChanged(object sender, EventArgs e) => LoadData();
+        private void cboClubFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (isInitializing) return;
+            LoadData();
+        }
+        private void cboPositionFilter_SelectedIndexChanged(object sender, EventArgs e) 
+        {
+            if (isInitializing) return;
+            LoadData(); 
+        }
         private void txtSearchName_TextChanged(object sender, EventArgs e) => LoadData();
 
         private void btnClear_Click(object sender, EventArgs e) => ClearFields();

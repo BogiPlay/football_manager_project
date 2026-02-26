@@ -35,9 +35,10 @@
             // 
             // btnOpenClubs
             // 
-            btnOpenClubs.Location = new Point(183, 204);
+            btnOpenClubs.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnOpenClubs.Location = new Point(85, 129);
             btnOpenClubs.Name = "btnOpenClubs";
-            btnOpenClubs.Size = new Size(162, 47);
+            btnOpenClubs.Size = new Size(217, 45);
             btnOpenClubs.TabIndex = 0;
             btnOpenClubs.Text = "Управление на Клубове";
             btnOpenClubs.UseVisualStyleBackColor = true;
@@ -45,9 +46,10 @@
             // 
             // btnOpenPlayers
             // 
-            btnOpenPlayers.Location = new Point(436, 204);
+            btnOpenPlayers.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnOpenPlayers.Location = new Point(85, 207);
             btnOpenPlayers.Name = "btnOpenPlayers";
-            btnOpenPlayers.Size = new Size(173, 47);
+            btnOpenPlayers.Size = new Size(217, 45);
             btnOpenPlayers.TabIndex = 1;
             btnOpenPlayers.Text = "Управление на Играчи";
             btnOpenPlayers.UseVisualStyleBackColor = true;
@@ -56,9 +58,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(337, 66);
+            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(100, 50);
             label1.Name = "label1";
-            label1.Size = new Size(100, 15);
+            label1.Size = new Size(187, 30);
             label1.TabIndex = 2;
             label1.Text = "Football Manager";
             // 
@@ -66,13 +69,13 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(385, 320);
             Controls.Add(label1);
             Controls.Add(btnOpenPlayers);
             Controls.Add(btnOpenClubs);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "MainForm";
+            Text = "Football Manager";
             ResumeLayout(false);
             PerformLayout();
         }

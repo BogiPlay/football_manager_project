@@ -33,7 +33,6 @@
             txtCity = new TextBox();
             label1 = new Label();
             label2 = new Label();
-            btnLoad = new Button();
             btnEdit = new Button();
             btnAdd = new Button();
             btnDelete = new Button();
@@ -93,21 +92,10 @@
             label2.TabIndex = 4;
             label2.Text = "Град:";
             // 
-            // btnLoad
-            // 
-            btnLoad.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            btnLoad.Location = new Point(656, 316);
-            btnLoad.Name = "btnLoad";
-            btnLoad.Size = new Size(120, 40);
-            btnLoad.TabIndex = 5;
-            btnLoad.Text = "Зареди";
-            btnLoad.UseVisualStyleBackColor = true;
-            btnLoad.Click += btnLoad_Click;
-            // 
             // btnEdit
             // 
             btnEdit.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            btnEdit.Location = new Point(353, 394);
+            btnEdit.Location = new Point(435, 400);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(120, 40);
             btnEdit.TabIndex = 6;
@@ -118,7 +106,7 @@
             // btnAdd
             // 
             btnAdd.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            btnAdd.Location = new Point(353, 316);
+            btnAdd.Location = new Point(435, 314);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(120, 40);
             btnAdd.TabIndex = 7;
@@ -129,7 +117,7 @@
             // btnDelete
             // 
             btnDelete.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            btnDelete.Location = new Point(505, 316);
+            btnDelete.Location = new Point(608, 314);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(120, 40);
             btnDelete.TabIndex = 8;
@@ -140,7 +128,7 @@
             // btnClear
             // 
             btnClear.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            btnClear.Location = new Point(505, 394);
+            btnClear.Location = new Point(608, 400);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(120, 40);
             btnClear.TabIndex = 9;
@@ -208,13 +196,13 @@
             Controls.Add(btnDelete);
             Controls.Add(btnAdd);
             Controls.Add(btnEdit);
-            Controls.Add(btnLoad);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(txtCity);
             Controls.Add(txtName);
             Controls.Add(dgvClubs);
             Name = "ClubsForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Управление на клубове";
             Load += ClubsForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvClubs).EndInit();
@@ -229,7 +217,6 @@
         private TextBox txtCity;
         private Label label1;
         private Label label2;
-        private Button btnLoad;
         private Button btnEdit;
         private Button btnAdd;
         private Button btnDelete;
