@@ -21,5 +21,11 @@ namespace FootballManager
             PlayersForm playersForm = new PlayersForm();
             playersForm.ShowDialog();
         }
+
+        private void btnOpenTransfers_Click(object sender, EventArgs e)
+        {
+            TransfersForm transfersForm = new TransfersForm();
+            transfersForm.ShowDialog();
+        }
     }
 }

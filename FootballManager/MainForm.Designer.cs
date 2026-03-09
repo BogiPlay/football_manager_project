@@ -31,12 +31,13 @@
             btnOpenClubs = new Button();
             btnOpenPlayers = new Button();
             label1 = new Label();
+            btnOpenTransfers = new Button();
             SuspendLayout();
             // 
             // btnOpenClubs
             // 
             btnOpenClubs.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnOpenClubs.Location = new Point(85, 129);
+            btnOpenClubs.Location = new Point(85, 127);
             btnOpenClubs.Name = "btnOpenClubs";
             btnOpenClubs.Size = new Size(217, 45);
             btnOpenClubs.TabIndex = 0;
@@ -47,7 +48,7 @@
             // btnOpenPlayers
             // 
             btnOpenPlayers.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnOpenPlayers.Location = new Point(85, 207);
+            btnOpenPlayers.Location = new Point(85, 195);
             btnOpenPlayers.Name = "btnOpenPlayers";
             btnOpenPlayers.Size = new Size(217, 45);
             btnOpenPlayers.TabIndex = 1;
@@ -65,11 +66,23 @@
             label1.TabIndex = 2;
             label1.Text = "Football Manager";
             // 
+            // btnOpenTransfers
+            // 
+            btnOpenTransfers.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnOpenTransfers.Location = new Point(85, 265);
+            btnOpenTransfers.Name = "btnOpenTransfers";
+            btnOpenTransfers.Size = new Size(217, 45);
+            btnOpenTransfers.TabIndex = 3;
+            btnOpenTransfers.Text = "Управление на Трансфери";
+            btnOpenTransfers.UseVisualStyleBackColor = true;
+            btnOpenTransfers.Click += btnOpenTransfers_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(385, 320);
+            ClientSize = new Size(385, 342);
+            Controls.Add(btnOpenTransfers);
             Controls.Add(label1);
             Controls.Add(btnOpenPlayers);
             Controls.Add(btnOpenClubs);
@@ -85,5 +98,6 @@
         private Button btnOpenClubs;
         private Button btnOpenPlayers;
         private Label label1;
+        private Button btnOpenTransfers;
     }
 }
