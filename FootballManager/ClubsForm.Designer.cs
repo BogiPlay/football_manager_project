@@ -52,7 +52,7 @@
             dgvClubs.Location = new Point(12, 12);
             dgvClubs.Name = "dgvClubs";
             dgvClubs.ReadOnly = true;
-            dgvClubs.Size = new Size(776, 268);
+            dgvClubs.Size = new Size(635, 268);
             dgvClubs.TabIndex = 0;
             dgvClubs.CellClick += dgvClubs_CellClick;
             // 
@@ -95,7 +95,7 @@
             // btnEdit
             // 
             btnEdit.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            btnEdit.Location = new Point(435, 400);
+            btnEdit.Location = new Point(376, 389);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(120, 40);
             btnEdit.TabIndex = 6;
@@ -106,7 +106,7 @@
             // btnAdd
             // 
             btnAdd.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            btnAdd.Location = new Point(435, 314);
+            btnAdd.Location = new Point(376, 314);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(120, 40);
             btnAdd.TabIndex = 7;
@@ -117,7 +117,7 @@
             // btnDelete
             // 
             btnDelete.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            btnDelete.Location = new Point(608, 314);
+            btnDelete.Location = new Point(519, 314);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(120, 40);
             btnDelete.TabIndex = 8;
@@ -128,7 +128,7 @@
             // btnClear
             // 
             btnClear.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            btnClear.Location = new Point(608, 400);
+            btnClear.Location = new Point(519, 389);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(120, 40);
             btnClear.TabIndex = 9;
@@ -139,7 +139,7 @@
             // txtId
             // 
             txtId.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            txtId.Location = new Point(688, 453);
+            txtId.Location = new Point(547, 455);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
             txtId.Size = new Size(100, 29);
@@ -186,7 +186,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 488);
+            ClientSize = new Size(657, 488);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(txtFoundedYear);

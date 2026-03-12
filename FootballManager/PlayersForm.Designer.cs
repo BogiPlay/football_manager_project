@@ -195,6 +195,7 @@
             // 
             // cboClubFilter
             // 
+            cboClubFilter.DropDownStyle = ComboBoxStyle.DropDownList;
             cboClubFilter.FormattingEnabled = true;
             cboClubFilter.Location = new Point(722, 23);
             cboClubFilter.Name = "cboClubFilter";
@@ -204,6 +205,7 @@
             // 
             // cboPositionFilter
             // 
+            cboPositionFilter.DropDownStyle = ComboBoxStyle.DropDownList;
             cboPositionFilter.FormattingEnabled = true;
             cboPositionFilter.Location = new Point(508, 23);
             cboPositionFilter.Name = "cboPositionFilter";
@@ -213,6 +215,7 @@
             // 
             // cboPosition
             // 
+            cboPosition.DropDownStyle = ComboBoxStyle.DropDownList;
             cboPosition.FormattingEnabled = true;
             cboPosition.Location = new Point(508, 442);
             cboPosition.Name = "cboPosition";
@@ -221,6 +224,7 @@
             // 
             // cboClub
             // 
+            cboClub.DropDownStyle = ComboBoxStyle.DropDownList;
             cboClub.FormattingEnabled = true;
             cboClub.Location = new Point(508, 492);
             cboClub.Name = "cboClub";

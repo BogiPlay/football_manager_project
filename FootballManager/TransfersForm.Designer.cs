@@ -31,7 +31,6 @@
             dgvTransfers = new DataGridView();
             label1 = new Label();
             label2 = new Label();
-            btnRefresh = new Button();
             btnTransfer = new Button();
             txtId = new TextBox();
             label3 = new Label();
@@ -42,6 +41,7 @@
             dtpTransferDate = new DateTimePicker();
             numFee = new NumericUpDown();
             cboPlayerFilter = new ComboBox();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvTransfers).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numFee).BeginInit();
             SuspendLayout();
@@ -53,14 +53,14 @@
             dgvTransfers.Location = new Point(12, 41);
             dgvTransfers.Name = "dgvTransfers";
             dgvTransfers.ReadOnly = true;
-            dgvTransfers.Size = new Size(776, 254);
+            dgvTransfers.Size = new Size(705, 254);
             dgvTransfers.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label1.Location = new Point(117, 343);
+            label1.Location = new Point(90, 320);
             label1.Name = "label1";
             label1.Size = new Size(59, 21);
             label1.TabIndex = 3;
@@ -70,29 +70,18 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label2.Location = new Point(89, 384);
+            label2.Location = new Point(62, 396);
             label2.Name = "label2";
             label2.Size = new Size(87, 21);
             label2.TabIndex = 4;
             label2.Text = "Нов клуб: ";
             // 
-            // btnRefresh
-            // 
-            btnRefresh.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            btnRefresh.Location = new Point(642, 372);
-            btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(120, 40);
-            btnRefresh.TabIndex = 6;
-            btnRefresh.Text = "Ъпдейт";
-            btnRefresh.UseVisualStyleBackColor = true;
-            btnRefresh.Click += btnRefresh_Click;
-            // 
             // btnTransfer
             // 
             btnTransfer.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            btnTransfer.Location = new Point(475, 374);
+            btnTransfer.Location = new Point(248, 455);
             btnTransfer.Name = "btnTransfer";
-            btnTransfer.Size = new Size(120, 40);
+            btnTransfer.Size = new Size(243, 40);
             btnTransfer.TabIndex = 7;
             btnTransfer.Text = "Трансфер";
             btnTransfer.UseVisualStyleBackColor = true;
@@ -101,7 +90,7 @@
             // txtId
             // 
             txtId.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            txtId.Location = new Point(688, 505);
+            txtId.Location = new Point(618, 466);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
             txtId.Size = new Size(100, 29);
@@ -112,7 +101,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label3.Location = new Point(117, 431);
+            label3.Location = new Point(428, 318);
             label3.Name = "label3";
             label3.Size = new Size(49, 21);
             label3.TabIndex = 13;
@@ -122,7 +111,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label4.Location = new Point(114, 473);
+            label4.Location = new Point(425, 360);
             label4.Name = "label4";
             label4.Size = new Size(52, 21);
             label4.TabIndex = 14;
@@ -130,8 +119,9 @@
             // 
             // cboPlayer
             // 
+            cboPlayer.DropDownStyle = ComboBoxStyle.DropDownList;
             cboPlayer.FormattingEnabled = true;
-            cboPlayer.Location = new Point(194, 343);
+            cboPlayer.Location = new Point(150, 319);
             cboPlayer.Name = "cboPlayer";
             cboPlayer.Size = new Size(159, 23);
             cboPlayer.TabIndex = 15;
@@ -139,48 +129,61 @@
             // 
             // txtFromClub
             // 
-            txtFromClub.Location = new Point(194, 301);
+            txtFromClub.Location = new Point(150, 356);
             txtFromClub.Name = "txtFromClub";
             txtFromClub.ReadOnly = true;
-            txtFromClub.Size = new Size(100, 23);
+            txtFromClub.Size = new Size(159, 23);
             txtFromClub.TabIndex = 16;
             // 
             // cboToClub
             // 
+            cboToClub.DropDownStyle = ComboBoxStyle.DropDownList;
             cboToClub.FormattingEnabled = true;
-            cboToClub.Location = new Point(194, 384);
+            cboToClub.Location = new Point(150, 395);
             cboToClub.Name = "cboToClub";
             cboToClub.Size = new Size(159, 23);
             cboToClub.TabIndex = 17;
             // 
             // dtpTransferDate
             // 
-            dtpTransferDate.Location = new Point(194, 429);
+            dtpTransferDate.Location = new Point(479, 318);
             dtpTransferDate.Name = "dtpTransferDate";
             dtpTransferDate.Size = new Size(159, 23);
             dtpTransferDate.TabIndex = 18;
             // 
             // numFee
             // 
-            numFee.Location = new Point(194, 471);
+            numFee.Location = new Point(479, 361);
             numFee.Name = "numFee";
             numFee.Size = new Size(159, 23);
             numFee.TabIndex = 19;
             // 
             // cboPlayerFilter
             // 
+            cboPlayerFilter.DropDownStyle = ComboBoxStyle.DropDownList;
             cboPlayerFilter.FormattingEnabled = true;
-            cboPlayerFilter.Location = new Point(652, 12);
+            cboPlayerFilter.Location = new Point(587, 12);
             cboPlayerFilter.Name = "cboPlayerFilter";
             cboPlayerFilter.Size = new Size(121, 23);
             cboPlayerFilter.TabIndex = 21;
             cboPlayerFilter.SelectedIndexChanged += cboPlayerFilter_SelectedIndexChanged;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label5.Location = new Point(62, 358);
+            label5.Name = "label5";
+            label5.Size = new Size(87, 21);
+            label5.TabIndex = 22;
+            label5.Text = "Стар клуб:";
+            // 
             // TransfersForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 546);
+            ClientSize = new Size(730, 507);
+            Controls.Add(label5);
             Controls.Add(cboPlayerFilter);
             Controls.Add(numFee);
             Controls.Add(dtpTransferDate);
@@ -191,13 +194,12 @@
             Controls.Add(label3);
             Controls.Add(txtId);
             Controls.Add(btnTransfer);
-            Controls.Add(btnRefresh);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(dgvTransfers);
             Name = "TransfersForm";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Управление на клубове";
+            Text = "Управление на трансфери";
             Load += TransfersForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvTransfers).EndInit();
             ((System.ComponentModel.ISupportInitialize)numFee).EndInit();
@@ -210,7 +212,6 @@
         private DataGridView dgvTransfers;
         private Label label1;
         private Label label2;
-        private Button btnRefresh;
         private Button btnTransfer;
         private TextBox txtId;
         private Label label3;
@@ -221,5 +222,6 @@
         private DateTimePicker dtpTransferDate;
         private NumericUpDown numFee;
         private ComboBox cboPlayerFilter;
+        private Label label5;
     }
 }

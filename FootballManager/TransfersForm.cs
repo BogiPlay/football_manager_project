@@ -17,38 +17,54 @@ namespace FootballManager
 
         private void TransfersForm_Load(object sender, EventArgs e)
         {
-            LoadDropdowns();
-            LoadHistory();
-            isInitializing = false;
+            try
+            {
+                LoadDropdowns();
+                LoadHistory();
+
+                isInitializing = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Грешка при стартиране на формата: " + ex.Message, "Критична грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LoadDropdowns()
         {
-            // Зареждаме клубовете за 'В Клуб'
+            // 1. Зареждаме клубовете
             cboToClub.DataSource = _repository.GetClubsForDropdown();
             cboToClub.DisplayMember = "name";
             cboToClub.ValueMember = "id";
             cboToClub.SelectedIndex = -1;
 
-            // Зареждане на играчите
+            // 2. Зареждаме играчите (основното меню)
             DataTable playersDt = _repository.GetPlayersForDropdown();
             cboPlayer.DataSource = playersDt;
             cboPlayer.DisplayMember = "full_name";
             cboPlayer.ValueMember = "id";
             cboPlayer.SelectedIndex = -1;
 
-            // Филтър по играч (със "Всички играчи")
-            DataTable playersFilterDt = playersDt.Copy();
-            DataRow allRow = playersFilterDt.NewRow();
-            allRow["id"] = 0;
-            allRow["full_name"] = "Всички играчи";
-            playersFilterDt.Rows.InsertAt(allRow, 0);
+            // 3. БЕЗОПАСЕН ФИЛТЪР ПО ИГРАЧ
+            // Вместо да копираме цялата таблица и да се борим с ограничения за NULL, 
+            // създаваме чисто нова, проста таблица само с 2 колони (ID и Име).
+            DataTable playersFilterDt = new DataTable();
+            playersFilterDt.Columns.Add("id", typeof(int));
+            playersFilterDt.Columns.Add("full_name", typeof(string));
+
+            // Добавяме нулевия ред
+            playersFilterDt.Rows.Add(0, "Всички играчи");
+
+            // Прехвърляме играчите един по един
+            foreach (DataRow row in playersDt.Rows)
+            {
+                playersFilterDt.Rows.Add(row["id"], row["full_name"]);
+            }
 
             cboPlayerFilter.DataSource = playersFilterDt;
             cboPlayerFilter.DisplayMember = "full_name";
             cboPlayerFilter.ValueMember = "id";
         }
-
         private void LoadHistory()
         {
             try
@@ -145,9 +161,6 @@ namespace FootballManager
             if (isInitializing) return;
             LoadHistory();
         }
-
-        private void btnRefresh_Click(object sender, EventArgs e) => LoadHistory();
-
         private void ClearForm()
         {
             cboPlayer.SelectedIndex = -1;
