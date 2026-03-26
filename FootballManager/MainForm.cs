@@ -27,5 +27,11 @@ namespace FootballManager
             TransfersForm transfersForm = new TransfersForm();
             transfersForm.ShowDialog();
         }
+
+        private void btnOpenLeagues_Click(object sender, EventArgs e)
+        {
+            LeaguesForm leaguesForm = new LeaguesForm();
+            leaguesForm.ShowDialog();
+        }
     }
 }
