@@ -5,9 +5,16 @@ INSERT INTO users (username, password_hash, role) VALUES
 ('admin', 'admin123_hash', 'Admin'),
 ('operator', 'pass123', 'Operator');
 
--- 2. Добавяне на лига (Създаваме "Европейска Супер Лига", за да съберем грандовете)
+-- 2. Добавяне на лига
 INSERT INTO leagues (name, season) VALUES 
-('European Super League', '2024/2025');
+('Първа лига', '2025/2026'),
+('Втора лига', '2025/2026'),
+('Шампионска лига', '2025/2026');
+
+-- Записване на отбори (ако приемем, че имат ID 1, 2, 3 и 4 от Етап 2)
+INSERT INTO league_teams (league_id, club_id) VALUES 
+(1, 1), (1, 2), (1, 3), -- 3 отбора в Първа лига
+(3, 1), (3, 4);         -- 2 отбора в Шампионска лига (един клуб може да е в 2 лиги)
 
 -- 3. Добавяне на известни клубове
 INSERT INTO clubs (name, city, stadium, founded_year) VALUES 
