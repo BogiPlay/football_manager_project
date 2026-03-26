@@ -14,8 +14,16 @@ CREATE TABLE users (
 CREATE TABLE leagues (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    season VARCHAR(20) NOT NULL, -- напр. "2025/2026"
-    UNIQUE(name, season)
+    season VARCHAR(20) NOT NULL,
+    CONSTRAINT uq_league_season UNIQUE (name, season) -- Забранява дублиране на лига за един и същи сезон
+);
+
+CREATE TABLE league_teams (
+    league_id INT NOT NULL,
+    club_id INT NOT NULL,
+    PRIMARY KEY (league_id, club_id),
+    CONSTRAINT fk_lt_league FOREIGN KEY (league_id) REFERENCES leagues(id) ON DELETE RESTRICT, 
+    CONSTRAINT fk_lt_club FOREIGN KEY (club_id) REFERENCES clubs(id) ON DELETE RESTRICT
 );
 
 -- 3. Таблица за клубове
