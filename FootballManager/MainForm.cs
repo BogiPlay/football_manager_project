@@ -33,5 +33,11 @@ namespace FootballManager
             LeaguesForm leaguesForm = new LeaguesForm();
             leaguesForm.ShowDialog();
         }
+
+        private void btnOpenSchedule_Click(object sender, EventArgs e)
+        {
+            ScheduleForm scheduleForm = new ScheduleForm();
+            scheduleForm.ShowDialog();
+        }
     }
 }
