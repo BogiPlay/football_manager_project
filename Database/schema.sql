@@ -53,6 +53,23 @@ CREATE TABLE IF NOT EXISTS league_teams (
     CONSTRAINT fk_lt_club FOREIGN KEY (club_id) REFERENCES clubs(id) ON DELETE RESTRICT
 );
 
+-- 6. Таблица за мачове и програма (Етап 6)
+CREATE TABLE IF NOT EXISTS matches (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    league_id INT NOT NULL,
+    round_no INT NOT NULL,
+    home_club_id INT NOT NULL,
+    away_club_id INT NOT NULL,
+    match_date DATETIME,
+    status ENUM('Scheduled', 'Played', 'Postponed') DEFAULT 'Scheduled',
+    home_goals INT DEFAULT 0,
+    away_goals INT DEFAULT 0,
+    CONSTRAINT fk_match_league FOREIGN KEY (league_id) REFERENCES leagues(id) ON DELETE CASCADE,
+    CONSTRAINT fk_match_home FOREIGN KEY (home_club_id) REFERENCES clubs(id) ON DELETE CASCADE,
+    CONSTRAINT fk_match_away FOREIGN KEY (away_club_id) REFERENCES clubs(id) ON DELETE CASCADE,
+    CONSTRAINT chk_different_clubs CHECK (home_club_id != away_club_id) -- Отбор не може да играе със себе си
+);
+
 -- (По желание) Таблица за потребители/роли (От Етап 1)
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
