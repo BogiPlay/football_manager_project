@@ -70,6 +70,40 @@ CREATE TABLE IF NOT EXISTS matches (
     CONSTRAINT chk_different_clubs CHECK (home_club_id != away_club_id) -- Отбор не може да играе със себе си
 );
 
+-- 7. Таблица за голове (Етап 7)
+CREATE TABLE IF NOT EXISTS goals (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    match_id INT NOT NULL,
+    player_id INT NOT NULL,
+    club_id INT NOT NULL, -- За да знаем за кой отбор е голът
+    goal_minute INT NOT NULL CHECK (goal_minute BETWEEN 1 AND 120), -- Валидация за минута
+    CONSTRAINT fk_goal_match FOREIGN KEY (match_id) REFERENCES matches(id) ON DELETE CASCADE,
+    CONSTRAINT fk_goal_player FOREIGN KEY (player_id) REFERENCES players(id) ON DELETE CASCADE,
+    CONSTRAINT fk_goal_club FOREIGN KEY (club_id) REFERENCES clubs(id) ON DELETE CASCADE
+);
+
+-- 8. Таблица за картони (Етап 7)
+CREATE TABLE IF NOT EXISTS cards (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    match_id INT NOT NULL,
+    player_id INT NOT NULL,
+    card_type ENUM('Yellow', 'Red') NOT NULL,
+    card_minute INT NOT NULL CHECK (card_minute BETWEEN 1 AND 120),
+    CONSTRAINT fk_card_match FOREIGN KEY (match_id) REFERENCES matches(id) ON DELETE CASCADE,
+    CONSTRAINT fk_card_player FOREIGN KEY (player_id) REFERENCES players(id) ON DELETE CASCADE
+);
+
+-- 9. Таблица за нарушения (фалове) (Етап 7)
+CREATE TABLE IF NOT EXISTS fouls (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    match_id INT NOT NULL,
+    player_id INT NOT NULL,
+    foul_type VARCHAR(50) DEFAULT 'Обикновен фал',
+    foul_minute INT NOT NULL CHECK (foul_minute BETWEEN 1 AND 120),
+    CONSTRAINT fk_foul_match FOREIGN KEY (match_id) REFERENCES matches(id) ON DELETE CASCADE,
+    CONSTRAINT fk_foul_player FOREIGN KEY (player_id) REFERENCES players(id) ON DELETE CASCADE
+);
+
 -- (По желание) Таблица за потребители/роли (От Етап 1)
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
