@@ -39,5 +39,11 @@ namespace FootballManager
             ScheduleForm scheduleForm = new ScheduleForm();
             scheduleForm.ShowDialog();
         }
+
+        private void btnOpenMatches_Click(object sender, EventArgs e)
+        {
+            MatchResultForm matchResultForm = new MatchResultForm();
+            matchResultForm.ShowDialog();
+        }
     }
 }

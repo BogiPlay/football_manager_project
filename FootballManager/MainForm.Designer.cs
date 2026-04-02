@@ -34,6 +34,7 @@
             btnOpenTransfers = new Button();
             btnOpenLeagues = new Button();
             btnOpenSchedule = new Button();
+            btnOpenMatches = new Button();
             SuspendLayout();
             // 
             // btnOpenClubs
@@ -93,7 +94,7 @@
             // btnOpenSchedule
             // 
             btnOpenSchedule.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnOpenSchedule.Location = new Point(166, 247);
+            btnOpenSchedule.Location = new Point(32, 246);
             btnOpenSchedule.Name = "btnOpenSchedule";
             btnOpenSchedule.Size = new Size(217, 45);
             btnOpenSchedule.TabIndex = 5;
@@ -101,11 +102,23 @@
             btnOpenSchedule.UseVisualStyleBackColor = true;
             btnOpenSchedule.Click += btnOpenSchedule_Click;
             // 
+            // btnOpenMatches
+            // 
+            btnOpenMatches.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnOpenMatches.Location = new Point(297, 246);
+            btnOpenMatches.Name = "btnOpenMatches";
+            btnOpenMatches.Size = new Size(217, 45);
+            btnOpenMatches.TabIndex = 6;
+            btnOpenMatches.Text = "Мачове";
+            btnOpenMatches.UseVisualStyleBackColor = true;
+            btnOpenMatches.Click += btnOpenMatches_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(554, 326);
+            Controls.Add(btnOpenMatches);
             Controls.Add(btnOpenSchedule);
             Controls.Add(btnOpenLeagues);
             Controls.Add(btnOpenTransfers);
@@ -127,5 +140,6 @@
         private Button btnOpenTransfers;
         private Button btnOpenLeagues;
         private Button btnOpenSchedule;
+        private Button btnOpenMatches;
     }
 }
