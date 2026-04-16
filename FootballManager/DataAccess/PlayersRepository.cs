@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Data;
+using FootballManager.Models;
 using MySql.Data.MySqlClient;
 
-namespace FootballManager
+namespace FootballManager.DataAccess
 {
     public class PlayersRepository
     {
@@ -71,11 +72,11 @@ namespace FootballManager
                     command.Parameters.AddWithValue("@LastName", player.LastName);
                     command.Parameters.AddWithValue("@BirthDate", player.BirthDate);
                     command.Parameters.AddWithValue("@Position", player.Position);
-                    command.Parameters.AddWithValue("@Nationality", string.IsNullOrEmpty(player.Nationality) ? (object)DBNull.Value : player.Nationality);
+                    command.Parameters.AddWithValue("@Nationality", string.IsNullOrEmpty(player.Nationality) ? DBNull.Value : player.Nationality);
                     command.Parameters.AddWithValue("@KitNumber", player.KitNumber);
 
                     // Ако е избран клуб (ID > 0), записваме го, иначе записваме NULL
-                    command.Parameters.AddWithValue("@CurrentClubId", player.CurrentClubId > 0 ? (object)player.CurrentClubId : DBNull.Value);
+                    command.Parameters.AddWithValue("@CurrentClubId", player.CurrentClubId > 0 ? player.CurrentClubId : DBNull.Value);
 
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -97,9 +98,9 @@ namespace FootballManager
                     command.Parameters.AddWithValue("@LastName", player.LastName);
                     command.Parameters.AddWithValue("@BirthDate", player.BirthDate);
                     command.Parameters.AddWithValue("@Position", player.Position);
-                    command.Parameters.AddWithValue("@Nationality", string.IsNullOrEmpty(player.Nationality) ? (object)DBNull.Value : player.Nationality);
+                    command.Parameters.AddWithValue("@Nationality", string.IsNullOrEmpty(player.Nationality) ? DBNull.Value : player.Nationality);
                     command.Parameters.AddWithValue("@KitNumber", player.KitNumber);
-                    command.Parameters.AddWithValue("@CurrentClubId", player.CurrentClubId > 0 ? (object)player.CurrentClubId : DBNull.Value);
+                    command.Parameters.AddWithValue("@CurrentClubId", player.CurrentClubId > 0 ? player.CurrentClubId : DBNull.Value);
                     command.Parameters.AddWithValue("@Id", player.Id);
 
                     connection.Open();

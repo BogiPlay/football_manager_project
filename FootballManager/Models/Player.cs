@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FootballManager
+namespace FootballManager.Models
 {
     public class Player
     {

@@ -1,30 +1,30 @@
-﻿using System;
+﻿using FootballManager.BusinessLogic;
+using FootballManager.Models;
+using System;
 using System.Data;
 using System.Windows.Forms;
 
-namespace FootballManager
+namespace FootballManager.UI
 {
     public partial class MatchResultForm : Form
     {
-        private MatchResultRepository _repository;
+        private MatchResultService _matchResultService;
         private bool isInitializing = true;
         private int currentMatchId = 0;
 
         public MatchResultForm()
         {
             InitializeComponent();
-            _repository = new MatchResultRepository();
+            _matchResultService = new MatchResultService();
         }
 
         private void MatchResultForm_Load(object sender, EventArgs e)
         {
             try
             {
-                // Зареждаме видовете събития
                 cboEventType.Items.AddRange(new string[] { "Гол", "Жълт картон", "Червен картон", "Фал" });
                 cboEventType.SelectedIndex = 0;
 
-                // Настройваме минутите
                 numMinute.Minimum = 1;
                 numMinute.Maximum = 120;
 
@@ -33,13 +33,13 @@ namespace FootballManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Грешка: " + ex.Message);
+                MessageBox.Show("Грешка при зареждане на формата: " + ex.Message, "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void LoadMatches()
         {
-            DataTable matchesDt = _repository.GetMatchesForDropdown();
+            DataTable matchesDt = _matchResultService.GetMatchesForDropdown();
             cboMatch.DataSource = matchesDt;
             cboMatch.DisplayMember = "match_name";
             cboMatch.ValueMember = "id";
@@ -60,16 +60,13 @@ namespace FootballManager
 
             lblScore.Text = status == "Played" ? $"Резултат: {homeG} - {awayG}" : "Резултат: 0 - 0 (Неизигран)";
 
-            // Зареждаме САМО играчите от този мач!
             LoadPlayersForCurrentMatch();
-
-            // Зареждаме хронологията на събитията
             LoadEvents();
         }
 
         private void LoadPlayersForCurrentMatch()
         {
-            DataTable playersDt = _repository.GetPlayersForMatch(currentMatchId);
+            DataTable playersDt = _matchResultService.GetPlayersForMatch(currentMatchId);
             cboPlayer.DataSource = playersDt;
             cboPlayer.DisplayMember = "player_name";
             cboPlayer.ValueMember = "id";
@@ -78,30 +75,32 @@ namespace FootballManager
 
         private void LoadEvents()
         {
-            dgvEvents.DataSource = _repository.GetMatchEvents(currentMatchId);
+            dgvEvents.DataSource = _matchResultService.GetMatchEvents(currentMatchId);
             dgvEvents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvEvents.ReadOnly = true;
         }
 
         private void btnAddEvent_Click(object sender, EventArgs e)
         {
-            if (currentMatchId == 0) { MessageBox.Show("Изберете мач!"); return; }
-            if (cboPlayer.SelectedValue == null) { MessageBox.Show("Изберете играч!"); return; }
-
-            int minute = (int)numMinute.Value;
-            if (minute < 1 || minute > 120) { MessageBox.Show("Минутата трябва да е между 1 и 120!"); return; }
+            if (currentMatchId == 0) { MessageBox.Show("Изберете мач!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
+            if (cboPlayer.SelectedValue == null) { MessageBox.Show("Изберете играч!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
 
             try
             {
-                int playerId = Convert.ToInt32(cboPlayer.SelectedValue);
-                string eventType = cboEventType.SelectedItem.ToString();
-
-                // Взимаме Club ID директно от избрания ред в менюто
                 DataRowView selectedPlayer = (DataRowView)cboPlayer.SelectedItem;
-                int clubId = Convert.ToInt32(selectedPlayer["current_club_id"]);
 
-                // Записваме събитието (и автоматично обновяваме резултата, ако е гол)
-                _repository.AddEvent(currentMatchId, playerId, clubId, eventType, minute);
+                // Създаваме модел с данните от UI
+                MatchEvent newEvent = new MatchEvent
+                {
+                    MatchId = currentMatchId,
+                    PlayerId = Convert.ToInt32(cboPlayer.SelectedValue),
+                    ClubId = Convert.ToInt32(selectedPlayer["current_club_id"]),
+                    EventType = cboEventType.SelectedItem.ToString(),
+                    Minute = (int)numMinute.Value
+                };
+
+                // Пращаме към Service слоя
+                _matchResultService.AddEvent(newEvent);
 
                 MessageBox.Show("Събитието е добавено успешно!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -119,7 +118,11 @@ namespace FootballManager
                 cboPlayer.SelectedIndex = -1;
                 numMinute.Value = 1;
             }
-            catch (Exception ex)
+            catch (ArgumentException argEx) // Хващаме бизнес валидацията
+            {
+                MessageBox.Show(argEx.Message, "Валидация", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex) // Хващаме системни грешки
             {
                 MessageBox.Show(ex.Message, "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

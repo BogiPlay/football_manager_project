@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using FootballManager.UI;
 
 namespace FootballManager
 {
@@ -18,7 +19,7 @@ namespace FootballManager
 
         private void btnOpenPlayers_Click(object sender, EventArgs e)
         {
-            PlayersForm playersForm = new PlayersForm();
+            PlayersForm playersForm = new PlayersForm();   
             playersForm.ShowDialog();
         }
 

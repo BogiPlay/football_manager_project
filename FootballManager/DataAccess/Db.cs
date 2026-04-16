@@ -3,7 +3,7 @@ using System.Configuration;
 using System.Data;
 using MySql.Data.MySqlClient;
 
-namespace FootballManager
+namespace FootballManager.DataAccess
 {
     public class Db
     {

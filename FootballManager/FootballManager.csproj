@@ -13,12 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="TransfersForm.cs">
+    <Compile Update="UI\TransfersForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="PlayersForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="UI\PlayersForm.cs" />
   </ItemGroup>
 
 </Project>

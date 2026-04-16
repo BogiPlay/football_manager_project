@@ -1,4 +1,4 @@
-﻿namespace FootballManager
+﻿namespace FootballManager.UI
 {
     partial class MatchResultForm
     {

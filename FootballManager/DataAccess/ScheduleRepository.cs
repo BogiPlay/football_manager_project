@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using FootballManager.Models;
 using MySql.Data.MySqlClient;
 
-namespace FootballManager
+namespace FootballManager.DataAccess
 {
     public class ScheduleRepository
     {

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Data;
+using FootballManager.Models;
 using MySql.Data.MySqlClient;
 
-namespace FootballManager
+namespace FootballManager.DataAccess
 {
     public class TransfersRepository
     {
@@ -90,7 +91,7 @@ namespace FootballManager
                         using (var cmdInsert = new MySqlCommand(insertQuery, connection, transaction))
                         {
                             cmdInsert.Parameters.AddWithValue("@PlayerId", transfer.PlayerId);
-                            cmdInsert.Parameters.AddWithValue("@FromClubId", transfer.FromClubId.HasValue ? (object)transfer.FromClubId.Value : DBNull.Value);
+                            cmdInsert.Parameters.AddWithValue("@FromClubId", transfer.FromClubId.HasValue ? transfer.FromClubId.Value : DBNull.Value);
                             cmdInsert.Parameters.AddWithValue("@ToClubId", transfer.ToClubId);
                             cmdInsert.Parameters.AddWithValue("@TransferDate", transfer.TransferDate);
                             cmdInsert.Parameters.AddWithValue("@TransferFee", transfer.TransferFee);

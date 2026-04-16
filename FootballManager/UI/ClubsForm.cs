@@ -1,16 +1,19 @@
-﻿using System;
+﻿using FootballManager.BusinessLogic; // Добавяме референция към новия BLL
+using FootballManager.Models;
+using System;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
-namespace FootballManager
+namespace FootballManager.UI
 {
     public partial class ClubsForm : Form
     {
-        private ClubsRepository _repository;
+        private ClubService _clubService; // Заменяме Repository със Service
 
         public ClubsForm()
         {
             InitializeComponent();
-            _repository = new ClubsRepository();
+            _clubService = new ClubService();
         }
 
         private void ClubsForm_Load(object sender, EventArgs e)
@@ -22,7 +25,8 @@ namespace FootballManager
         {
             try
             {
-                dgvClubs.DataSource = _repository.GetAllClubs();
+                // Зареждаме данните през Service слоя
+                dgvClubs.DataSource = _clubService.GetAllClubs();
 
                 if (dgvClubs.Columns.Contains("id"))
                 {
@@ -53,20 +57,15 @@ namespace FootballManager
         private void ConfigureGridAppearance()
         {
             dgvClubs.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
             dgvClubs.RowHeadersVisible = false;
-
             dgvClubs.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
             dgvClubs.MultiSelect = false;
-
             dgvClubs.ReadOnly = true;
-
             dgvClubs.BackgroundColor = System.Drawing.Color.White;
-
             dgvClubs.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(240, 240, 240);
         }
 
+        // Тази логика остава тук, защото е свързана с конвертирането на UI текст към данни (Model binding)
         private int GetFoundedYear()
         {
             if (string.IsNullOrWhiteSpace(txtFoundedYear.Text)) return 0;
@@ -77,18 +76,12 @@ namespace FootballManager
             }
             else
             {
-                throw new Exception("Годината на основаване трябва да бъде цяло число!");
+                throw new ArgumentException("Годината на основаване трябва да бъде цяло число!");
             }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtName.Text))
-            {
-                MessageBox.Show("Името на клуба е задължително!", "Валидация", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             try
             {
                 Club newClub = new Club
@@ -99,10 +92,14 @@ namespace FootballManager
                     FoundedYear = GetFoundedYear()
                 };
 
-                _repository.AddClub(newClub);
+                _clubService.AddClub(newClub); // Валидацията се случва вътре в Service-а
                 MessageBox.Show("Клубът е успешно добавен!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadData();
                 ClearFields();
+            }
+            catch (ArgumentException argEx) // Хващаме бизнес/UI валидацията
+            {
+                MessageBox.Show(argEx.Message, "Валидация", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
@@ -118,12 +115,6 @@ namespace FootballManager
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtName.Text))
-            {
-                MessageBox.Show("Името на клуба не може да бъде празно!", "Валидация", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             try
             {
                 Club updatedClub = new Club
@@ -135,9 +126,13 @@ namespace FootballManager
                     FoundedYear = GetFoundedYear()
                 };
 
-                _repository.UpdateClub(updatedClub);
+                _clubService.UpdateClub(updatedClub);
                 MessageBox.Show("Данните са обновени успешно!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadData();
+            }
+            catch (ArgumentException argEx)
+            {
+                MessageBox.Show(argEx.Message, "Валидация", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
@@ -159,7 +154,7 @@ namespace FootballManager
                 try
                 {
                     int id = int.Parse(txtId.Text);
-                    _repository.DeleteClub(id);
+                    _clubService.DeleteClub(id);
                     MessageBox.Show("Клубът е изтрит!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadData();
                     ClearFields();
@@ -176,7 +171,6 @@ namespace FootballManager
             ClearFields();
         }
 
-        // Зареждане на данните в текстовите полета при клик върху ред
         private void dgvClubs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
