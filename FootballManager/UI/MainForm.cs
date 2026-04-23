@@ -19,7 +19,7 @@ namespace FootballManager
 
         private void btnOpenPlayers_Click(object sender, EventArgs e)
         {
-            PlayersForm playersForm = new PlayersForm();   
+            PlayersForm playersForm = new PlayersForm();
             playersForm.ShowDialog();
         }
 
@@ -45,6 +45,12 @@ namespace FootballManager
         {
             MatchResultForm matchResultForm = new MatchResultForm();
             matchResultForm.ShowDialog();
+        }
+
+        private void btnOpenStandings_Click(object sender, EventArgs e)
+        {
+            StandingsForm standingsForm = new StandingsForm();
+            standingsForm.ShowDialog();
         }
     }
 }

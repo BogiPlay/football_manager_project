@@ -35,6 +35,7 @@
             btnOpenLeagues = new Button();
             btnOpenSchedule = new Button();
             btnOpenMatches = new Button();
+            btnOpenStandings = new Button();
             SuspendLayout();
             // 
             // btnOpenClubs
@@ -113,11 +114,23 @@
             btnOpenMatches.UseVisualStyleBackColor = true;
             btnOpenMatches.Click += btnOpenMatches_Click;
             // 
+            // btnOpenStandings
+            // 
+            btnOpenStandings.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnOpenStandings.Location = new Point(32, 314);
+            btnOpenStandings.Name = "btnOpenStandings";
+            btnOpenStandings.Size = new Size(217, 45);
+            btnOpenStandings.TabIndex = 7;
+            btnOpenStandings.Text = "Класиране";
+            btnOpenStandings.UseVisualStyleBackColor = true;
+            btnOpenStandings.Click += btnOpenStandings_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(554, 326);
+            ClientSize = new Size(554, 387);
+            Controls.Add(btnOpenStandings);
             Controls.Add(btnOpenMatches);
             Controls.Add(btnOpenSchedule);
             Controls.Add(btnOpenLeagues);
@@ -141,5 +154,6 @@
         private Button btnOpenLeagues;
         private Button btnOpenSchedule;
         private Button btnOpenMatches;
+        private Button btnOpenStandings;
     }
 }
