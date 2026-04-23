@@ -64,7 +64,7 @@ namespace FootballManager.UI
 
                 // Преименуваме колоните на български
                 if (dgvStandings.Columns.Contains("Position")) dgvStandings.Columns["Position"].HeaderText = "№";
-                if (dgvStandings.Columns.Contains("ClubName")) dgvStandings.Columns["ClubName"].HeaderText = "Отбор";
+                if (dgvStandings.Columns.Contains("ClubName")) dgvStandings.Columns["ClubName"].HeaderText = "Отбор"; dgvStandings.Columns["ClubName"].Width = 120;
                 if (dgvStandings.Columns.Contains("MatchesPlayed")) dgvStandings.Columns["MatchesPlayed"].HeaderText = "Мачове";
                 if (dgvStandings.Columns.Contains("Wins")) dgvStandings.Columns["Wins"].HeaderText = "Победи";
                 if (dgvStandings.Columns.Contains("Draws")) dgvStandings.Columns["Draws"].HeaderText = "Равни";
